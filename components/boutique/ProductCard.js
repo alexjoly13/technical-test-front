@@ -1,14 +1,6 @@
-import {
-    Card,
-    CardContent,
-    CardActions,
-    CardMedia,
-    Typography,
-    Button,
-    withStyles,
-    IconButton
-} from '@material-ui/core'
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import { Card, CardContent, CardActions, CardMedia, Typography, IconButton } from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import {useContext} from "react";
 import GlobalContext from "../../state/global-context";
 
@@ -68,12 +60,12 @@ const ProductCard = (props) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <IconButton onClick={e => handleAddToCart(e, product)}>
+                <IconButton onClick={e => handleAddToCart(e, product)} size="large">
                     <ShoppingBasketIcon color="secondary"/>
                 </IconButton>
             </CardActions>
         </Card>
-    )
+    );
 }
 
 export default withStyles(useStyles)(ProductCard)

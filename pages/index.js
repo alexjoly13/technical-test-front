@@ -1,5 +1,6 @@
 import DefaultLayaout from '../components/DefaultLayout'
-import { withStyles, Button, Container, Grid, Typography } from '@material-ui/core'
+import { Button, Container, Grid, Typography } from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
 import Link from 'next/link'
 
 const useStyles = theme => ({
@@ -20,7 +21,7 @@ const  Home = props => {
                     entirely.
                 </Typography>
                 <div className={classes.heroButtons}>
-                    <Grid container spacing={2} justify="center">
+                    <Grid container spacing={2} justifyContent="center">
                         <Grid item>
                             <Link href="/boutique" passhref>
                                 <Button variant="contained" component="a">
@@ -31,8 +32,7 @@ const  Home = props => {
                     </Grid>
                 </div>
             </Container>
-
         </DefaultLayaout>
-    )
+    );
 }
 export default withStyles(useStyles)(Home)

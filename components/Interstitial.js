@@ -1,9 +1,10 @@
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import {withStyles, Typography, Button, Grid, Card, IconButton, CardMedia} from '@material-ui/core'
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import { Typography, Button, Grid, Card, IconButton, CardMedia } from '@mui/material';
+import withStyles from '@mui/styles/withStyles';
 import {useContext} from 'react'
 import GlobalContext from '../state/global-context';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import DeleteIcon from '@material-ui/icons/Delete';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import DeleteIcon from '@mui/icons-material/Delete';
 import {useEffect, useState} from "react";
 
 const useStyles = theme => ({
@@ -69,7 +70,9 @@ const Interstitial = props => {
             <div className={classes.interstitial}>
                 <Grid container alignItems="center" className={classes.productListContainer}>
                     <Grid item>
-                        <IconButton onClick={() => context.pushObject('open_interstitial', false)}>
+                        <IconButton
+                            onClick={() => context.pushObject('open_interstitial', false)}
+                            size="large">
                             <ArrowBackIcon color="secondary"/>
                         </IconButton>
                     </Grid>
@@ -99,7 +102,10 @@ const Interstitial = props => {
                                 <div className={classes.productItemContent}>
                                     <Typography>{product.title}</Typography>
                                     <Typography>{product.price}euros</Typography>
-                                    <IconButton onClick={() => handleRemoveProduct(product.id)} className={classes.deleteIcon}>
+                                    <IconButton
+                                        onClick={() => handleRemoveProduct(product.id)}
+                                        className={classes.deleteIcon}
+                                        size="large">
                                         <DeleteIcon color="secondary"/>
                                     </IconButton>
                                 </div>
@@ -112,7 +118,7 @@ const Interstitial = props => {
                 <Button color="primary" variant="contained">Commander</Button>
             </div>
         </SwipeableDrawer>
-    )
+    );
 }
 
 export default withStyles(useStyles)(Interstitial)

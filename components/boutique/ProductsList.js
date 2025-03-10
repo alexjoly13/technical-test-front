@@ -1,5 +1,6 @@
 import ProductCard from './ProductCard'
-import {Grid, Typography, withStyles} from "@material-ui/core";
+import { Grid, Typography } from "@mui/material";
+import withStyles from '@mui/styles/withStyles';
 import { useContext, useState } from 'react';
 import GlobalContext from '../../state/global-context';
 
