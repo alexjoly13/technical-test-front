@@ -19,7 +19,7 @@ npm run dev
 yarn dev
 ```
 
-Pay attention to your node (v16) and Npm (v6) version
+Pay attention to your node (v14) and Npm (v6) version
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
@@ -39,7 +39,7 @@ You have to reproduce this component :
 ![Blissim card component](/public/static/images/card-component.png "Blisism card component")
 You can choose similar fonts and the image is available in the public folder.
 You can positioned the component on the homepage instead of the "lorem" text.
-#### Keep in mind that most of the content on our site is customizable by teams and comes from a back office. It's not hardcoded.
+#### Keep in mind that most of the content on our site is customizable by teams and comes from a back office.
 
 Here is the figma file: https://www.figma.com/file/vxaazm4D0eucRuMhBkWL6r/Composant-Card
 
@@ -50,12 +50,6 @@ To learn more about Next.js, take a look at the following resources:
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](~https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme~) from the creators of Next.js.
-
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 ## Do not forget
 The purpose of this test is to evaluate your skills, so feel free to refactor and adapt the project to show us *your* skills and apply best practices (SOLID, web performance etc.).
