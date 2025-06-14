@@ -1,0 +1,15 @@
+.boutique-page {
+  margin-bottom: 24px;
+
+  .main-title {
+    margin: 40px 0;
+  }
+
+  .filter-title {
+    color: var(--primary-color);
+  }
+
+  .filter-list-item {
+    padding: 0;
+  }
+}

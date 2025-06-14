@@ -1,0 +1,11 @@
+.header-component {
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+
+    .cart-icon {
+      color: var(--light-color);
+    }
+  }
+}
