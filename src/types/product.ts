@@ -1,5 +1,5 @@
 export interface IProduct {
-  category: 'men clothing'
+  category: 'men clothing' | 'jewelery' | 'electronics' | 'women clothing'
   description: string
   id: number
   image: string
