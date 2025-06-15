@@ -5,6 +5,7 @@ import type { ReactElement } from 'react'
 import type { IProduct } from '~/types/product'
 
 import { useGlobalContext } from '~/contexts/global-context'
+import { PANEL_ACTIONS, usePanelContext } from '~/contexts/panel-context'
 
 import styles from './product-card.module.css'
 
@@ -15,14 +16,18 @@ interface Props {
 const ProductCard = ({ product }: Props): ReactElement => {
   /** Local state */
 
-  const { addProductToCart, pushObject } = useGlobalContext()
+  const { addProductToCart } = useGlobalContext()
+
+  const { dispatch } = usePanelContext()
 
   const { description, image, price, title } = product
 
   /** Handlers */
 
-  //@ts-expect-error callback typing to be fixed
-  const handleAddToCart = (product: IProduct) => () => addProductToCart(product, pushObject('open_interstitial', true))
+  const handleAddToCart = (product: IProduct) => () => {
+    addProductToCart(product)
+    dispatch({ type: PANEL_ACTIONS.PANEL_OPEN })
+  }
 
   /** Render */
 

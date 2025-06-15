@@ -6,17 +6,22 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer'
 import type { ReactElement } from 'react'
 
 import { useGlobalContext } from '~/contexts/global-context'
+import { PANEL_ACTIONS, usePanelContext } from '~/contexts/panel-context'
 
 import styles from './panel.module.css'
 
 const Panel = (): ReactElement => {
   /** Local state */
 
-  const { cart, openInterstitial, pushObject, removeProductToCart } = useGlobalContext()
+  const { cart, removeProductToCart } = useGlobalContext()
+
+  const { dispatch, state } = usePanelContext()
 
   /** Handlers */
 
-  const handlePanelOpen = () => pushObject('open_interstitial', false)
+  const handlePanelState = (isOpen: boolean) => () => {
+    dispatch({ type: isOpen ? PANEL_ACTIONS.PANEL_OPEN : PANEL_ACTIONS.PANEL_CLOSE })
+  }
 
   const handleRemoveProduct = (id: number) => () => removeProductToCart(id)
 
@@ -31,11 +36,16 @@ const Panel = (): ReactElement => {
   /** Render */
 
   return (
-    <SwipeableDrawer anchor={'right'} onClose={handlePanelOpen} onOpen={handlePanelOpen} open={openInterstitial}>
+    <SwipeableDrawer
+      anchor={'right'}
+      onClose={handlePanelState(false)}
+      onOpen={handlePanelState(true)}
+      open={state.panel}
+    >
       <div className={styles['panel-component']}>
         <Grid alignItems="center" className={styles['product-list-container']} container>
           <Grid>
-            <IconButton onClick={handlePanelOpen} size="large">
+            <IconButton onClick={handlePanelState(false)} size="large">
               <ArrowBackIcon sx={{ color: '#283149' }} />
             </IconButton>
           </Grid>

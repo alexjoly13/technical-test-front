@@ -7,6 +7,7 @@ import type { ReactElement, ReactNode } from 'react'
 import Footer from '~/components/Footer'
 import Header from '~/components/Header'
 import { GlobalProvider } from '~/contexts/global-context'
+import { PanelContextProvider } from '~/contexts/panel-context'
 
 import styles from './layout.module.css'
 
@@ -35,11 +36,13 @@ export default function RootLayout({
       <body id="root">
         <AppRouterCacheProvider>
           <GlobalProvider>
-            <div className={styles.layout}>
-              <Header />
-              <main>{children}</main>
-              <Footer />
-            </div>
+            <PanelContextProvider>
+              <div className={styles.layout}>
+                <Header />
+                <main>{children}</main>
+                <Footer />
+              </div>
+            </PanelContextProvider>
           </GlobalProvider>
         </AppRouterCacheProvider>
       </body>

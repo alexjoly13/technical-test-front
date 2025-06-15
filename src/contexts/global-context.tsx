@@ -9,8 +9,6 @@ interface GlobalContextType {
   addProductToCart: (product: IProduct, callback?: VoidFunction) => void
   cart: IProduct[]
   getCart: VoidFunction
-  openInterstitial: boolean
-  pushObject: (key: string, value: boolean, callback?: VoidFunction) => void
   removeProductToCart: (id: number, callback?: VoidFunction) => void
 }
 
@@ -18,15 +16,6 @@ const GlobalContext = createContext<GlobalContextType | undefined>(undefined)
 
 const GlobalProvider = ({ children }: { children: ReactNode }): ReactElement => {
   const [cart, setCart] = useState<IProduct[]>([])
-
-  const [openInterstitial, setOpenInterstitial] = useState(false)
-
-  const pushObject = useCallback((key: string, value: boolean, callback?: VoidFunction) => {
-    if (key === 'open_interstitial') {
-      setOpenInterstitial(value)
-    }
-    if (callback) callback()
-  }, [])
 
   const getCart = useCallback(() => {
     const sessionStorageCart = JSON.parse(sessionStorage.getItem('cart') || 'null')
@@ -71,8 +60,6 @@ const GlobalProvider = ({ children }: { children: ReactNode }): ReactElement => 
     addProductToCart,
     cart,
     getCart,
-    openInterstitial,
-    pushObject,
     removeProductToCart,
   }
 
@@ -87,7 +74,5 @@ const useGlobalContext = (): GlobalContextType => {
   }
   return context
 }
-
-export default GlobalContext
 
 export { GlobalProvider, useGlobalContext }
