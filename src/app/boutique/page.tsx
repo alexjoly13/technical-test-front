@@ -7,6 +7,8 @@ import ProductsList from '~/components/boutique/ProductsList'
 import styles from './boutique.module.css'
 
 const Boutique = (): ReactElement => {
+  /** Render */
+
   return (
     <Container className={styles['boutique-page']} maxWidth="lg">
       <Grid container justifyContent={'center'}>

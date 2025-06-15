@@ -6,6 +6,7 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer'
 import type { ReactElement } from 'react'
 
 import { useGlobalContext } from '~/contexts/global-context'
+import { useCart } from '~/contexts/list-context'
 import { PANEL_ACTIONS, usePanelContext } from '~/contexts/panel-context'
 
 import styles from './panel.module.css'
@@ -14,6 +15,8 @@ const Panel = (): ReactElement => {
   /** Local state */
 
   const { cart, removeProductToCart } = useGlobalContext()
+
+  const { items: cartItems } = useCart()
 
   const { dispatch, state } = usePanelContext()
 
@@ -59,7 +62,7 @@ const Panel = (): ReactElement => {
             <Typography>{cart.length > 1 ? `${cart.length} produits` : `${cart.length} produit`}</Typography>
           </Grid>
 
-          {cart.map(({ id, image, price, title }, index) => (
+          {cartItems.map(({ id, image, price, title }, index) => (
             <Grid key={`${id}-${index}`} size={12}>
               <Card className={styles['product-card']}>
                 <CardMedia alt={title} className={styles['product-image']} component="img" image={image} />

@@ -1,10 +1,10 @@
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket'
+import { Favorite, FavoriteBorder, ShoppingBasket } from '@mui/icons-material'
 import { Card, CardContent, CardActions, CardMedia, Typography, IconButton } from '@mui/material'
 
 import type { ReactElement } from 'react'
 import type { IProduct } from '~/types/product'
 
-import { useGlobalContext } from '~/contexts/global-context'
+import { useCart, useWishlist } from '~/contexts/list-context'
 import { PANEL_ACTIONS, usePanelContext } from '~/contexts/panel-context'
 
 import styles from './product-card.module.css'
@@ -16,24 +16,35 @@ interface Props {
 const ProductCard = ({ product }: Props): ReactElement => {
   /** Local state */
 
-  const { addProductToCart } = useGlobalContext()
+  const { addItem: addToCart } = useCart()
+
+  const { addItem: addToWishlist, items: wishlistItems, removeItem: removeFromWishlist } = useWishlist()
+  console.log('🚀 ~ ProductCard ~ wishlistItems:', wishlistItems)
 
   const { dispatch } = usePanelContext()
 
   const { description, image, price, title } = product
 
+  const isProductWishlisted = wishlistItems.some((item) => item.id === product.id)
+
   /** Handlers */
 
   const handleAddToCart = (product: IProduct) => () => {
-    addProductToCart(product)
+    addToCart(product)
     dispatch({ type: PANEL_ACTIONS.PANEL_OPEN })
   }
+
+  const handleWishlistClick = (product: IProduct) => () =>
+    isProductWishlisted ? removeFromWishlist(product.id) : addToWishlist(product)
 
   /** Render */
 
   return (
     <Card className={styles['product-card-component']}>
       <CardContent className={styles.content}>
+        <IconButton onClick={handleWishlistClick(product)}>
+          {isProductWishlisted ? <Favorite sx={{ color: '#283149' }} /> : <FavoriteBorder />}
+        </IconButton>
         <div className={styles['thumbnail-wrapper']}>
           <CardMedia
             alt={title}
@@ -55,7 +66,7 @@ const ProductCard = ({ product }: Props): ReactElement => {
       </CardContent>
       <CardActions>
         <IconButton onClick={handleAddToCart(product)} size="large">
-          <ShoppingBasketIcon sx={{ color: '#283149' }} />
+          <ShoppingBasket sx={{ color: '#283149' }} />
         </IconButton>
       </CardActions>
     </Card>

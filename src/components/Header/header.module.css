@@ -7,5 +7,21 @@
     .cart-icon {
       color: var(--light-color);
     }
+
+    .cart-count-tag {
+      position: absolute;
+      right: 0.25rem;
+      top: 0.25rem;
+    }
+
+    .wishlist-count-tag {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .heart-icon {
+      color: var(--light-color);
+    }
   }
 }

@@ -5,6 +5,7 @@
       "~/__mocks__/*": ["./src/__mocks__/*"],
       "~/components/*": ["./src/components/*"],
       "~/contexts/*": ["./src/contexts/*"],
+      "~/hooks/*": ["./src/hooks/*"],
       "~/types/*": ["./src/types/*"],
       "~/*": ["./src/*"]
     }
