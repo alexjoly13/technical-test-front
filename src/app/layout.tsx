@@ -1,4 +1,3 @@
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter'
 import { Roboto } from 'next/font/google'
 
 import type { Metadata } from 'next'
@@ -6,10 +5,9 @@ import type { ReactElement, ReactNode } from 'react'
 
 import Footer from '~/components/Footer'
 import Header from '~/components/Header'
-import { GlobalProvider } from '~/contexts/global-context'
-import { PanelContextProvider } from '~/contexts/panel-context'
 
 import styles from './layout.module.css'
+import Providers from './providers'
 
 import '../styles/globals.css'
 
@@ -34,17 +32,13 @@ export default function RootLayout({
     <html className={roboto.variable} lang="en">
       <meta content="#283149" name="theme-color" />
       <body id="root">
-        <AppRouterCacheProvider>
-          <GlobalProvider>
-            <PanelContextProvider>
-              <div className={styles.layout}>
-                <Header />
-                <main>{children}</main>
-                <Footer />
-              </div>
-            </PanelContextProvider>
-          </GlobalProvider>
-        </AppRouterCacheProvider>
+        <Providers>
+          <div className={styles.layout}>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </div>
+        </Providers>
       </body>
     </html>
   )
