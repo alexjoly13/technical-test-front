@@ -1,4 +1,6 @@
 .header-component {
+  height: 4rem;
+
   .toolbar {
     display: flex;
     justify-content: space-between;

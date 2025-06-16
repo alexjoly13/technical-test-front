@@ -50,7 +50,7 @@ export const slot3: ICardContent = {
     },
     {
       isBold: false,
-      text: 'de soins de qualité et le plus naturels possibles',
+      text: 'de soins de qualité et le plus naturels possibles.',
     },
   ],
   iconUrl: '/static/images/laptop-icon.svg',

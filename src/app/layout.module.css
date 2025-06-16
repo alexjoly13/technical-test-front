@@ -1,3 +1,7 @@
 .layout {
   min-height: 100dvh;
+
+  main {
+    min-height: calc(100dvh - 4rem - 7.25rem);
+  }
 }

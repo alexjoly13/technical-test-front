@@ -12,17 +12,20 @@ const Home = (): ReactElement => {
 
   return (
     <div className={styles['home-page']}>
-      <Container maxWidth="sm">
-        <Typography align="center" color="textPrimary" component="h1" gutterBottom variant="h2">
+      <Container className={styles['home-main-container']}>
+        <Typography
+          align="center"
+          className={styles['main-title']}
+          color="textPrimary"
+          component="h1"
+          gutterBottom
+          variant="h2"
+        >
           SuperShop
-        </Typography>
-        <Typography align="center" color="textSecondary" paragraph variant="h5">
-          Something short and leading about the collection below—its contents, the creator, etc. Make it short and
-          sweet, but not too short so folks don&apos;t simply skip over it entirely.
         </Typography>
         <HomeCard
           className={styles['home-card']}
-          pictureUrl="/static/images/homepage-box-image.jpg"
+          pictureUrl="/static/images/homepage-box-image.webp"
           slot1={slot1}
           slot2={slot2}
           slot3={slot3}

@@ -1,5 +1,18 @@
 .home-page {
-  .home-card {
-    margin-bottom: 2rem;
+  min-height: calc(100dvh - 4rem - 7.25rem);
+
+  .home-main-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .main-title {
+      margin: 2.5rem 0;
+    }
+
+    .home-card {
+      margin-bottom: 2rem;
+    }
   }
 }
