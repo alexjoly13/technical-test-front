@@ -20,12 +20,12 @@
     }
 
     .thumbnail-wrapper {
-      padding: 16px;
+      padding: 1rem;
       text-align: center;
 
       .thumbnail {
         margin: auto;
-        max-height: 170px;
+        max-height: 10.625rem;
         width: auto;
       }
     }
