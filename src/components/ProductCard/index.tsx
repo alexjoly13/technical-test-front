@@ -42,7 +42,7 @@ const ProductCard = ({ product }: Props): ReactElement => {
   return (
     <Card className={styles['product-card-component']}>
       <CardContent className={styles.content}>
-        <IconButton onClick={handleWishlistClick(product)}>
+        <IconButton className={styles['favorite-icon']} onClick={handleWishlistClick(product)}>
           {isProductWishlisted ? <Favorite sx={{ color: '#283149' }} /> : <FavoriteBorder />}
         </IconButton>
         <div className={styles['thumbnail-wrapper']}>

@@ -6,7 +6,18 @@
   justify-content: space-between;
 
   .content {
+    position: relative;
     width: 100%;
+
+    .favorite-icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      svg {
+        font-size: 1.75rem;
+      }
+    }
 
     .thumbnail-wrapper {
       padding: 16px;

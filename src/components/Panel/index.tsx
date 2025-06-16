@@ -5,7 +5,6 @@ import SwipeableDrawer from '@mui/material/SwipeableDrawer'
 
 import type { ReactElement } from 'react'
 
-import { useGlobalContext } from '~/contexts/global-context'
 import { useCart } from '~/contexts/list-context'
 import { PANEL_ACTIONS, usePanelContext } from '~/contexts/panel-context'
 
@@ -14,9 +13,7 @@ import styles from './panel.module.css'
 const Panel = (): ReactElement => {
   /** Local state */
 
-  const { cart, removeProductToCart } = useGlobalContext()
-
-  const { items: cartItems } = useCart()
+  const { items: cartItems, removeItem: removeProductFromCard } = useCart()
 
   const { dispatch, state } = usePanelContext()
 
@@ -26,11 +23,11 @@ const Panel = (): ReactElement => {
     dispatch({ type: isOpen ? PANEL_ACTIONS.PANEL_OPEN : PANEL_ACTIONS.PANEL_CLOSE })
   }
 
-  const handleRemoveProduct = (id: number) => () => removeProductToCart(id)
+  const handleRemoveProduct = (id: number) => () => removeProductFromCard(id)
 
   const getTotalPrice = () => {
     let totalPrice = 0
-    cart.map(({ price }) => {
+    cartItems.map(({ price }) => {
       totalPrice += price
     })
     return totalPrice
@@ -59,7 +56,9 @@ const Panel = (): ReactElement => {
 
         <Grid className={styles['product-list-container']} container spacing={2}>
           <Grid size={12}>
-            <Typography>{cart.length > 1 ? `${cart.length} produits` : `${cart.length} produit`}</Typography>
+            <Typography>
+              {cartItems.length > 1 ? `${cartItems.length} produits` : `${cartItems.length} produit`}
+            </Typography>
           </Grid>
 
           {cartItems.map(({ id, image, price, title }, index) => (

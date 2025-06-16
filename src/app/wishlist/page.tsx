@@ -1,19 +1,11 @@
-'use client'
-
-import { Container, Grid, Typography } from '@mui/material'
+import { Container, Grid, List, ListItem, ListItemText, Typography } from '@mui/material'
 
 import type { ReactElement } from 'react'
 
-import ProductCard from '~/components/boutique/ProductCard'
-import { useWishlist } from '~/contexts/list-context'
-
 import styles from './wishlist.module.css'
+import WishlistView from './WishlistView'
 
 const Wishlist = (): ReactElement => {
-  /** Local state */
-
-  const { items: wishlistItems } = useWishlist()
-
   /** Render */
 
   return (
@@ -26,18 +18,33 @@ const Wishlist = (): ReactElement => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid size={{ md: 9, xs: 12 }}>
-          <Grid container spacing={2}>
-            {wishlistItems.length > 0 ? (
-              wishlistItems.map((product) => (
-                <Grid key={product.id} size={{ md: 4, xs: 6 }}>
-                  <ProductCard product={product} />
-                </Grid>
-              ))
-            ) : (
-              <div>No items in your wishlist</div>
-            )}
+        <Grid container>
+          <Grid>
+            <Typography className={styles['main-title']} component="h2" fontWeight={600} variant="h5">
+              Mes articles
+            </Typography>
           </Grid>
+        </Grid>
+        <Grid container>
+          <Grid size={{ md: 3, xs: 12 }}>
+            <Typography className={styles['filter-title']} variant="h6">
+              Catégories
+            </Typography>
+            <div>
+              <List>
+                <ListItem className={styles['filter-list-item']}>
+                  <ListItemText primary="Maquillage" />
+                </ListItem>
+                <ListItem className={styles['filter-list-item']}>
+                  <ListItemText primary="Soins visage" />
+                </ListItem>
+                <ListItem className={styles['filter-list-item']}>
+                  <ListItemText primary="Parfums" />
+                </ListItem>
+              </List>
+            </div>
+          </Grid>
+          <WishlistView />
         </Grid>
       </Container>
     </div>

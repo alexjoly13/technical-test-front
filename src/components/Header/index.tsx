@@ -35,9 +35,14 @@ const Header = (): ReactElement => {
         <AppBar elevation={0} position="static" sx={{ backgroundColor: '#283149' }}>
           <Container maxWidth="lg">
             <Toolbar className={styles.toolbar}>
-              <Link href="/" passHref>
-                <Typography variant="h4">SuperShop</Typography>
-              </Link>
+              <div className={styles['menu-container']}>
+                <Link href="/" passHref>
+                  <Typography variant="h4">SuperShop</Typography>
+                </Link>
+                <Link href="/boutique">
+                  <Typography>Boutique</Typography>
+                </Link>
+              </div>
               <div>
                 <IconButton onClick={toggleDrawer} size="large">
                   {cart.length > 0 ? <Tag className={styles['cart-count-tag']}>{cart.length}</Tag> : null}

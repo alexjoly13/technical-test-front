@@ -76,13 +76,9 @@ const useListContext = (): ListContextType<IProduct> => {
   return context
 }
 
-export {
-  ListProvider,
-  useListContext,
+export { ListProvider, useListContext }
 
-  // CartContext.tsx
-}
-
+// CartContext
 interface CartContextType {
   items: IProduct[]
   addItem: (item: IProduct, callback?: () => void) => void
@@ -106,8 +102,7 @@ export const useCart = (): CartContextType => {
   return context
 }
 
-// WishlistContext.tsx
-
+// WishlistContext
 interface WishlistContextType {
   items: IProduct[]
   addItem: (item: IProduct, callback?: () => void) => void
