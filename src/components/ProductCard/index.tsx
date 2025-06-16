@@ -19,7 +19,6 @@ const ProductCard = ({ product }: Props): ReactElement => {
   const { addItem: addToCart } = useCart()
 
   const { addItem: addToWishlist, items: wishlistItems, removeItem: removeFromWishlist } = useWishlist()
-  console.log('🚀 ~ ProductCard ~ wishlistItems:', wishlistItems)
 
   const { dispatch } = usePanelContext()
 

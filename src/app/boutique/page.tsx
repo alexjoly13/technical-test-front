@@ -2,9 +2,8 @@ import { Container, Grid, Typography, List, ListItem, ListItemText } from '@mui/
 
 import type { ReactElement } from 'react'
 
-import ProductsList from '~/components/boutique/ProductsList'
-
 import styles from './boutique.module.css'
+import BoutiqueView from './BoutiqueView'
 
 const Boutique = (): ReactElement => {
   /** Render */
@@ -37,9 +36,7 @@ const Boutique = (): ReactElement => {
             </List>
           </div>
         </Grid>
-        <Grid size={{ md: 9, xs: 12 }}>
-          <ProductsList />
-        </Grid>
+        <BoutiqueView />
       </Grid>
     </Container>
   )
