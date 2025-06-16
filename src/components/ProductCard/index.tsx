@@ -22,7 +22,7 @@ const ProductCard = ({ product }: Props): ReactElement => {
 
   const { dispatch } = usePanelContext()
 
-  const { description, image, price, title } = product
+  const { image, price, title } = product
 
   const isProductWishlisted = wishlistItems.some((item) => item.id === product.id)
 
@@ -57,10 +57,7 @@ const ProductCard = ({ product }: Props): ReactElement => {
           {title}
         </Typography>
         <Typography color="textSecondary" component="p" variant="body2">
-          {description}
-        </Typography>
-        <Typography color="textSecondary" component="p" variant="body2">
-          {price}
+          {price} €
         </Typography>
       </CardContent>
       <CardActions>
